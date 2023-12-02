@@ -92,7 +92,6 @@ generateSongMarkup(newSong("hugeass.net", "buttjuggle.org", "the world"));
 //alright now add a button to submit new songs.
 
 function formHandler(event) {
-  // console.log(songText.value)
-//   console.log(generateSongMarkup(songText.value)); //having this uncommented adds it twice
+
   generateSongMarkup(newSong(songText.value));
 }
