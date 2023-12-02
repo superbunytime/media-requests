@@ -50,6 +50,13 @@ function stopVideo() {
 
 const table = document.getElementById("queue");
 const tBody = document.getElementsByTagName("tbody");
+const button = document.getElementById("songButton");
+const songText = document.getElementById("songText");
+
+button.addEventListener("click", function (e) {
+  e.preventDefault();
+  formHandler(e);
+});
 
 class Song {
   constructor(url, site, source) {
@@ -73,17 +80,19 @@ function generateSongMarkup(song) {
   let cell1 = row.insertCell(0);
   let cell2 = row.insertCell(1);
   let cell3 = row.insertCell(2);
-  
+
   cell1.innerHTML = song.url;
   cell2.innerHTML = song.site;
   cell3.innerHTML = song.source;
-  
 }
 
-// console.log(generateSongMarkup(newSong("ass.net", "buttjuggle.gov", "heeheehaha")))
-//also works
+generateSongMarkup(newSong("ass.net", "buttjuggle.gov", "heeheehaha"));
+generateSongMarkup(newSong("hugeass.net", "buttjuggle.org", "the world"));
 
-// table.appendChild(generateSongMarkup(newSong("ass.net", "buttjuggle.gov", "heeheehaha")))
+//alright now add a button to submit new songs.
 
-generateSongMarkup(newSong("ass.net", "buttjuggle.gov", "heeheehaha"))
-generateSongMarkup(newSong("hugeass.net", "buttjuggle.org", "the world"))
+function formHandler(event) {
+  // console.log(songText.value)
+//   console.log(generateSongMarkup(songText.value)); //having this uncommented adds it twice
+  generateSongMarkup(newSong(songText.value));
+}
