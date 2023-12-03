@@ -24,7 +24,7 @@ for non request queue playlists, allow shuffle/unshuffle on frontend
 
 Backend
 
-Will need to get the title data from Youtube's API and pipe it from backend to frontend
+Will need to get the title data, thumbnail from Youtube's API and pipe it from backend to frontend
 Connect to twitch
 
 Add all relevant commands: !sr, !song, !wrongsong, !queue, !skip, !bansong, !unbansong

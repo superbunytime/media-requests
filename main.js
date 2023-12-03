@@ -15,8 +15,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
-    height: "390",
-    width: "640",
+    height: "195",
+    width: "320",
     videoId: youtubeURLSlice,
     playerVars: {
       playsinline: 1,
@@ -105,22 +105,29 @@ function formHandler(event) {
 //alright now get the first url in the table
 
 function popSong(){
-    //get the most recent song in the queue,
-    //put it in the player
-    //put it in a now playing div
+    //get the most recent song in the queue, pit it in the player, now playing div
+    let requester = document.getElementsByTagName("td")[2].innerText
     youtubeURL = document.getElementsByTagName("td")[0].innerText
+    let originPlatform = document.getElementsByTagName("td")[1].innerText
     youtubeURLSlice = youtubeURL.slice(youtubeURL.lastIndexOf("/") + 1)
-    nowPlaying.innerText = `The current Track is ${youtubeURL}`
-    
+    nowPlaying.innerHTML = `The current Track is <a href="${youtubeURL}">${youtubeURL}</a>, requested by ${requester} platform: ${originPlatform}`
+    //this will look funky if it's from backup playlist
     table.deleteRow(1);
-    //currently too silly brained to delete a row. god i hate tables.
-    //so row 0 was your headers, which is why you didn't notice
-    //you were using it right for the last half hour
-    //fml
+    //this creates a data peristency problem for later, unless you preserve the platform data.
+    //that sounds like a future problem for future me.
+    return new Song(youtubeURL, originPlatform, requester)
+}
 
-    //remove it from the queue table
-    //you are here ^
-
+function unpopSong(poppedSong){
+    //alright now if someone wants to switch playlists, how would one do that?
+    //that's something to consider, but beyond the scope of this function
+    //this function is only concerned with unpopping the song
+    //which is something that needs to happen before shifting playlists
+    //so just re-add the song at index[1]
+    //but that problem for future me turned into a problem for present me
+    //if i use popsong to return a song object, i can just take that as the argument!!
+    //hey that worked!
+    //i'm very smart.
 }
 
 popSong()
