@@ -111,7 +111,12 @@ function popSong(){
     youtubeURL = document.getElementsByTagName("td")[0].innerText
     youtubeURLSlice = youtubeURL.slice(youtubeURL.lastIndexOf("/") + 1)
     nowPlaying.innerText = `The current Track is ${youtubeURL}`
-
+    
+    table.deleteRow(1);
+    //currently too silly brained to delete a row. god i hate tables.
+    //so row 0 was your headers, which is why you didn't notice
+    //you were using it right for the last half hour
+    //fml
 
     //remove it from the queue table
     //you are here ^
