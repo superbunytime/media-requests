@@ -130,4 +130,5 @@ function unpopSong(poppedSong){
     //i'm very smart.
 }
 
-popSong()
+let poppedSong = popSong()
+console.log(poppedSong)
