@@ -119,8 +119,11 @@ function unpopSong(song) {
   //need to write a function to update the youtube player and call it in the unpop song function
 }
 
-function updatePlayer(youtubePlayer) {
-  console.log(player.h.g.videoId);
+function updatePlayer(youtubePlayer, newVideoId) {
+  console.log(youtubePlayer.h.g.videoId);
+  let videoId = youtubePlayer.h.g.videoId
+  videoId = "D6IcPQRxAb0"
+  console.log(videoId)
   // player.clearVideo();
   //player.clearVideo() doesn't work and the documentation for it is actually impossible to find
   //however, you can set the songId to an empty string to achieve the desired effect.
