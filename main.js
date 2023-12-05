@@ -133,6 +133,13 @@ function updatePlayer(youtubePlayer, newVideoId) {
   //why is it returning the youtube player, but calling it "Or"
   //that does not make any sense and i think i have brain damage now
   //I SEE YOU. console.log(player.h.g.videoId);
+
+  //wait, why don't i just hide the player,
+  //update the value of videoId
+  //and unhide the player?
+
+  //updating the value of videoId is what i'm struggling with, isn't it?
+  //anyway we need to construct an entirely new player object if we wanna do this smart.
 }
 
 let poppedSong = popSong();
