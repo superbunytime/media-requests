@@ -1,19 +1,9 @@
-//template code starts here
-//time to start tinkering with the template
-
-//1. The <iframe> (and video player) will replace this <div> tag.
-
-// 2. This code loads the IFrame Player API code asynchronously.
-var tag = document.createElement("script");
-
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName("script")[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
-var player;
-function onYouTubeIframeAPIReady() {
+let player;
+function onYouTubeIframeAPIReady() { //this makes a callback to the YT
+  console.log(YT.Player)
   player = new YT.Player("player", {
     height: "195",
     width: "320",
@@ -68,6 +58,7 @@ class Song {
   }
 }
 
+
 button.addEventListener("click", function (e) {
   e.preventDefault();
   formHandler(e);
@@ -119,11 +110,9 @@ function unpopSong(song) {
   //need to write a function to update the youtube player and call it in the unpop song function
 }
 
-function updatePlayer(youtubePlayer, newVideoId) {
-  console.log(youtubePlayer.h.g.videoId);
-  let videoId = youtubePlayer.h.g.videoId
-  videoId = "D6IcPQRxAb0"
-  console.log(videoId)
+function updatePlayer() {
+//   console.log(youtubePlayer.h.g.videoId);
+//   let videoId = youtubePlayer.h.g.videoId
   // player.clearVideo();
   //player.clearVideo() doesn't work and the documentation for it is actually impossible to find
   //however, you can set the songId to an empty string to achieve the desired effect.
@@ -140,7 +129,14 @@ function updatePlayer(youtubePlayer, newVideoId) {
 
   //updating the value of videoId is what i'm struggling with, isn't it?
   //anyway we need to construct an entirely new player object if we wanna do this smart.
+  //stepping away from updatePlayer function to first create a player function;
+  //the update player function will just update the view
+  //the player spawner will create a new youtube player element
+
+  //let's just destroy the element, update the youtube url id, and remake it.
 }
+
+
 
 let poppedSong = popSong();
 //this needs to be at the bottom, or at least not at the top, due to scope error i haven't figured out yet
@@ -150,3 +146,5 @@ const myTimeout = setTimeout(() => {
 }, 3000);
 
 // const myTimeout = setTimeout( () => {unpopSong((poppedSong))}, 5000);
+
+console.log(YT.Player)
