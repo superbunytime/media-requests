@@ -41,6 +41,7 @@ function stopVideo() {
 
 //my code starts here
 
+const playerFrame = document.getElementById("player");
 const table = document.getElementById("queue");
 const tBody = document.getElementsByTagName("tbody");
 const button = document.getElementById("songButton");
@@ -134,6 +135,7 @@ function updatePlayer() {
   //the player spawner will create a new youtube player element
 
   //let's just destroy the element, update the youtube url id, and remake it.
+  playerFrame.innerHTML = ""
 }
 
 
@@ -142,7 +144,7 @@ let poppedSong = popSong();
 //this needs to be at the bottom, or at least not at the top, due to scope error i haven't figured out yet
 
 const myTimeout = setTimeout(() => {
-  updatePlayer(player);
+  updatePlayer();
 }, 3000);
 
 // const myTimeout = setTimeout( () => {unpopSong((poppedSong))}, 5000);

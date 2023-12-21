@@ -1,0 +1,26 @@
+{
+  "type": "module",
+  "name": "song-requests",
+  "version": "1.0.0",
+  "description": "For now this is just going to be where otherwise superfluous comments and\r rapidly scribbled notes are gonna get dumped.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superbunytime/media-requests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superbunytime/media-requests/issues"
+  },
+  "homepage": "https://github.com/superbunytime/media-requests#readme",
+  "dependencies": {
+    "axios": "^1.6.2",
+    "dotenv": "^16.3.1",
+    "tmi.js": "^1.8.5",
+    "youtubei": "^1.2.1"
+  }
+}
