@@ -37,7 +37,7 @@ const music = new MusicClient();
 
 // console.log(await youtube.search("HyqK2Tsujho"))
 
-let res = await youtube.search("HyqK2Tsujho")
+let res = await youtube.search("HyqK2Tsujho") //dougdoug video
 
 await console.log(res.items[0].title)
 
@@ -46,3 +46,5 @@ await console.log(`youtu.be/${res.items[0].id}`)
 await console.log(res.items[0].thumbnails[0])
 
 // alright now get the youtube link/title/thumbnail for the first search result
+
+//coolgood. throw some error handling on it, and you're golden on youtube search stuff

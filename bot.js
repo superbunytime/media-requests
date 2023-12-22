@@ -1,10 +1,13 @@
-import axios, * as others from "axios";
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
+// import axios, * as others from "axios";
+// import { createRequire } from "module";
+// const require = createRequire(import.meta.url);
 const tmi = require("tmi.js");
 const fs = require("fs");
-import dotenv from "dotenv";
+const dotenv = require("dotenv");
 const { Client, MusicClient } = require("youtubei");
+const express = require('express');
+const app = express();
+const ExpressError = require('./expressError');
 
 //the question is, do i cram an express server into the bot file?
 //no, obviously not. maybe the routing, but not the app logic.
@@ -132,3 +135,15 @@ client.connect();
 function onConnectedHandler(addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
 }
+
+//okay so good news; now in theory, you can just cram all the express code in here.
+//because someone upstairs fixed package import require conflict commonjs module
+//nightmare nightmare nightmare nightmare but this time in your favor
+
+//EXPRESS CODE STARTS HERE MAYBE
+
+app.listen(3000, function() {
+  console.log(`app on port 3000`);
+});
+
+//honestly i wasn't expecting that to work.

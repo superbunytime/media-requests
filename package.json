@@ -1,5 +1,5 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "song-requests",
   "version": "1.0.0",
   "description": "For now this is just going to be where otherwise superfluous comments and\r rapidly scribbled notes are gonna get dumped.",
