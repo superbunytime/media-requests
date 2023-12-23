@@ -42,3 +42,6 @@ DM the user a list of songs from the JSON datbase.
 !skip should skip the current song, removing it from the list.
 !bansong should ban a song from the list, preventing it from being selected
 !unbansong see if you can figure out what this command should do winkyface
+
+for now instead of using an express server we're just going to
+have logic to check the json file on the website every 5 seconds

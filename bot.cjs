@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const { Client, MusicClient } = require("youtubei");
 const express = require('express');
 const app = express();
-const ExpressError = require('./expressError');
+// const ExpressError = require('./expressError.cjs');
 
 //the question is, do i cram an express server into the bot file?
 //no, obviously not. maybe the routing, but not the app logic.
@@ -55,7 +55,11 @@ client.on("message", async (channel, tags, message, self) => {
     //it's a search term or exact url or url fragment
     //include logic for failed youtube api search
     //and banned songs
+
+    //we'll be putting express route code here
     
+    //express post route goes here
+    //why don't i just put in on a javascript object
     client.say(
       channel,
       `@${tags["display-name"]}, attempting to add ${message.slice(4)} to the queue; youtube URL: YOUTUBE_URL`
