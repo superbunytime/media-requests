@@ -1,4 +1,4 @@
-// const { Client, MusicClient } = require("youtubei");
+const { Client, MusicClient } = require("youtubei");
 // or for TS / ES6
 import { Client, MusicClient } from "youtubei";
 
