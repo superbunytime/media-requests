@@ -1,22 +1,21 @@
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
 const fs = require("fs/promises");
 const { Client, MusicClient } = require("youtubei");
 const youtube = new Client();
 
 async function build_song(str) {
   let res_arr = [];
-  let res = await youtube.search(str).then((data) => {
-    let thumbnail = data.items[0].thumbnails[0];
-    let title = data.items[0].title;
-    let url = `youtu.be/${data.items[0].id}`;
-    // console.log([thumbnail, title, url]);
-    res_arr.push(thumbnail, title, url)
-    // console.log(res_arr)
-  });
-  console.log(res_arr)
+  let data = await youtube.search(str)
+  let thumbnail = data.items[0].thumbnails[0];
+  let title = data.items[0].title;
+  let url = `youtu.be/${data.items[0].id}`;
+  res_arr.push(thumbnail, title, url)
   return res_arr
 }
 
-console.log(build_song("HyqK2Tsujho"));
+console.log(await build_song("HyqK2Tsujho")) //now returns the results i need
+
 
 async function get_songs(file) {
   let song_list = await fs.readFile(file).then((data) => {
