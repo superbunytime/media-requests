@@ -14,11 +14,13 @@ const ExpressError = require('./expressError.cjs');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+//moving the website to a public folder
+//and the line below this, fixed the MIME type issue.
+app.use(express.static("public"));
 
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'public/index.html'));
+  res.sendFile(join(__dirname, 'index.html'));
 });
-// console.log("peepee")
 
 
 dotenv.config();
