@@ -4,13 +4,14 @@ const fs = require("fs/promises");
 const { Client, MusicClient } = require("youtubei");
 const youtube = new Client();
 
-async function build_song(str) {
+async function build_song(str, requester = "default requester") {
   let res_arr = [];
   let data = await youtube.search(str)
   let thumbnail = data.items[0].thumbnails[0];
   let title = data.items[0].title;
   let url = `youtu.be/${data.items[0].id}`;
-  res_arr.push(thumbnail, title, url)
+  let source = requester
+  res_arr.push(thumbnail, title, url, source)
   return res_arr
 }
 
