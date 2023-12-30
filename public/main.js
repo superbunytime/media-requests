@@ -1,7 +1,7 @@
 //might need to add socket.io imports here
 // import { createRequire } from "module";
 import { Server } from 'socket.io';
-// const io = require('socket.io');
+const io = require('socket.io');
 
 //let's try package.json sinning again
 //cursed cursed cursed
