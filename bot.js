@@ -1,16 +1,20 @@
 import axios, * as others from "axios";
 import { createRequire } from "module";
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
+import { fileURLToPath } from "node:url";
+import { dirname, join } from "node:path";
+import { createServer } from 'node:http';
+import { Server } from "socket.io";
 const require = createRequire(import.meta.url);
 const tmi = require("tmi.js");
 const fs = require("fs");
 const dotenv = require("dotenv");
 const { Client, MusicClient } = require("youtubei");
-const express = require('express');
-const app = express();
-const ExpressError = require('./expressError.cjs');
+const express = require("express");
+const ExpressError = require("./expressError.cjs");
 
+const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -18,10 +22,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 //and the line below this, fixed the MIME type issue.
 app.use(express.static("public"));
 
-app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(join(__dirname, "index.html"));
 });
 
+io.on("connection", (socket) => {
+  console.log("a user connected");
+});
 
 dotenv.config();
 const token = process.env.TMI_TOKEN;
@@ -29,13 +36,7 @@ const token = process.env.TMI_TOKEN;
 //commands to write
 //sr, song, wrongsong, skip, next, removesong, queue (how?)(dm user the queue??)(maybe don't have that feature), volume, playlist, bansong
 
-const mods = [
-  "sussybnuuy",
-  "nekyua",
-  "puppypotion",
-  "rad_butte",
-  "puppyforce"
-]; //define a list of moderator usernames as strings
+const mods = ["sussybnuuy", "nekyua", "puppypotion", "rad_butte", "puppyforce"]; //define a list of moderator usernames as strings
 
 // Define configuration options
 const opts = {
@@ -67,12 +68,14 @@ client.on("message", async (channel, tags, message, self) => {
     //and banned songs
 
     //we'll be putting express route code here
-    
+
     //express post route goes here
     //why don't i just put in on a javascript object
     client.say(
       channel,
-      `@${tags["display-name"]}, attempting to add ${message.slice(4)} to the queue; youtube URL: YOUTUBE_URL`
+      `@${tags["display-name"]}, attempting to add ${message.slice(
+        4
+      )} to the queue; youtube URL: YOUTUBE_URL`
     );
   }
   if (message.startsWith("!song")) {
@@ -156,7 +159,7 @@ function onConnectedHandler(addr, port) {
 
 //EXPRESS CODE STARTS HERE MAYBE
 
-app.listen(3000, function() {
+app.listen(3000, function () {
   console.log(`app on port 3000`);
 });
 

@@ -1,6 +1,15 @@
+//might need to add socket.io imports here
+// import { createRequire } from "module";
+import { Server } from 'socket.io';
+// const io = require('socket.io');
+
+//let's try package.json sinning again
+//cursed cursed cursed
 
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
+const socket = io();
+console.log(socket)
 let player;
 function onYouTubeIframeAPIReady() { //this makes a callback to the YT
   console.log(YT.Player)

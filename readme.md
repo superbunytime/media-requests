@@ -45,3 +45,7 @@ DM the user a list of songs from the JSON datbase.
 
 for now instead of using an express server we're just going to
 have logic to check the json file on the website every 5 seconds
+
+okay shit um
+working on socket.io integration. that's what i'm doing. got the express server
+to serve the page. can work on the requestCommands after establishing socket.io connection.
